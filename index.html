@@ -11,6 +11,7 @@ function random() {
             let k = 0 ;
             for(var j = 0 ; j < numArray.length; j++){
                 if(numArray[j] == num){
+                    document.getElementById("ransuu").innerHTML += "<br>" + num + "</br>"; //乱数の出力
                     k = 1;
                 }
             }
@@ -22,6 +23,6 @@ function random() {
         i++ ;
     }
     
-    document.getElementById("ransuu").innerHTML = numarray; //乱数の出力
+    
 }
 </script>
