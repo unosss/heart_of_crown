@@ -1,0 +1,27 @@
+<form><input type="button" value="デッキ生成" onClick="random()">
+<span id="ransuu">表示場所</span></form>
+
+<script type="text/javascript">
+function random() {
+    var numArray = [] ;
+    let i = 0 ;
+    while(i < 10){
+        while(true){
+            var num = Math.floor( Math.random() * 101 + 1 ) ; //乱数の取得
+            let k = 0 ;
+            for(var j = 0 ; j < numArray.length; j++){
+                if(numArray[j] == num){
+                    k = 1;
+                }
+            }
+            if(k == 0){
+                numArray.push(num);
+                break;
+            }
+        }
+        i++ ;
+    }
+    
+    document.getElementById("ransuu").innerHTML = numarray; //乱数の出力
+}
+</script>
