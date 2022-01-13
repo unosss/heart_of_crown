@@ -5,6 +5,7 @@
 function random() {
     var numArray = [] ;
     let i = 0 ;
+    document.getElementById("ransuu").innerHTML = "";
     while(i < 10){
         while(true){
             var num = Math.floor( Math.random() * 101 + 1 ) ; //乱数の取得
@@ -16,7 +17,7 @@ function random() {
                 }
             }
             if(k == 0){
-                document.getElementById("ransuu").innerHTML += "<br>" + num + "</br>"; //乱数の出力
+                document.getElementById("ransuu").innerHTML += "<br>" + numArray.length + "</br>"; //乱数の出力
                 numArray.push(num);
                 break;
             }
