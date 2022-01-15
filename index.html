@@ -15,6 +15,143 @@
 </form>
 
 <script>
+function Card(name, type, cost) {
+    this.name = name;
+    this.type = type;
+    this.cost = cost;
+    this.equals = function (p) {
+        return (this.name == p.name && this.type == p.type && this.cost == p.cost);
+    }
+    
+}
+var cardArray = [] ;
+{
+    //1~10
+    cardArray.push(new Card("寄付","行動","2"));
+    cardArray.push(new Card("早馬","行動","2"));
+    cardArray.push(new Card("願いの泉","行動","2"));
+    cardArray.push(new Card("城壁","行動・防衛","2"));
+    cardArray.push(new Card("斥候","行動・攻撃","2"));
+    cardArray.push(new Card("召集令状","行動","3"));
+    cardArray.push(new Card("焼き畑農業","行動","3"));
+    cardArray.push(new Card("交易船","行動","3"));
+    cardArray.push(new Card("破城槌","行動","3"));
+    cardArray.push(new Card("隠れ家","行動・防衛","3"));
+
+    //11~20
+    cardArray.push(new Card("買収工作","行動・攻撃","3"));
+    cardArray.push(new Card("魔法の護符","行動・防衛・災い","3"));
+    cardArray.push(new Card("埋もれた財宝","行動","3"));
+    cardArray.push(new Card("御用商人","行動","3"));
+    cardArray.push(new Card("追い立てられた魔獣","行動・攻撃","4"));
+    cardArray.push(new Card("シノビ","行動+追加","4"));
+    cardArray.push(new Card("金貸し","行動","4"));
+    cardArray.push(new Card("図書館","行動","4"));
+    cardArray.push(new Card("星詠みの魔女","行動","4"));
+    cardArray.push(new Card("都市開発","行動","4"));
+
+    //21~30
+    cardArray.push(new Card("歩兵大隊","行動・攻撃","4"));
+    cardArray.push(new Card("補給部隊","行動","4"));
+    cardArray.push(new Card("魅了術の魔女","行動・攻撃","4"));
+    cardArray.push(new Card("近衛騎士団","行動・攻撃","4"));
+    cardArray.push(new Card("銀行","行動","5"));
+    cardArray.push(new Card("皇室領","継承権・領地","5"));
+    cardArray.push(new Card("呪詛の魔女","行動・攻撃","5"));
+    cardArray.push(new Card("冒険者","行動","5"));
+    cardArray.push(new Card("錬金術師","行動","5"));
+    cardArray.push(new Card("噂好きの公爵夫人","継承権","6"));
+
+    //31~40
+    cardArray.push(new Card("お金好きの妖精","行動","2"));
+    cardArray.push(new Card("伝書鳩","行動","3"));
+    cardArray.push(new Card("課税","行動","3"));
+    cardArray.push(new Card("貿易商人","行動","3"));
+    cardArray.push(new Card("弓兵隊","行動・攻撃","3"));
+    cardArray.push(new Card("見習い魔女","行動・攻撃","4"));
+    cardArray.push(new Card("クノイチ","行動・防衛+追加","4"));
+    cardArray.push(new Card("港町","領地","4"));
+    cardArray.push(new Card("サムライ","行動・攻撃","4"));
+    cardArray.push(new Card("鉱山都市","領地","4"));
+
+    //41~50
+    cardArray.push(new Card("結盟","行動","5"));
+    cardArray.push(new Card("割り符","行動","5"));
+    cardArray.push(new Card("ケットシー","行動","2"));
+    cardArray.push(new Card("幸運の銀貨","行動","2"));
+    cardArray.push(new Card("洗礼","行動","3"));
+    cardArray.push(new Card("呪いの人形","災い","3"));
+    cardArray.push(new Card("名馬","行動","3"));
+    cardArray.push(new Card("エルフの狙撃手","行動・攻撃","4"));
+    cardArray.push(new Card("宮廷闘争","行動・攻撃","4"));
+    cardArray.push(new Card("ドワーフの宝石職人","行動","4"));
+
+    //51~60
+    cardArray.push(new Card("貴族の一人娘","継承権","5"));
+    cardArray.push(new Card("豪商","行動","5"));
+    cardArray.push(new Card("地方役人","行動","5"));
+    cardArray.push(new Card("工業都市","領地","6"));
+    cardArray.push(new Card("独占","行動","6"));
+    cardArray.push(new Card("密偵","行動・攻撃","2"));
+    cardArray.push(new Card("巡礼","行動","2"));
+    cardArray.push(new Card("家守の精霊","行動","2"));
+    cardArray.push(new Card("伝令","行動","2"));
+    cardArray.push(new Card("春風の妖精","行動","2"));
+
+    //61~70
+    cardArray.push(new Card("司書","行動","3"));
+    cardArray.push(new Card("祝福","行動","3"));
+    cardArray.push(new Card("星巫女の託宣","行動","3"));
+    cardArray.push(new Card("リーフフェアリー","行動","3"));
+    cardArray.push(new Card("旅芸人","行動","3"));
+    cardArray.push(new Card("ギルドマスター","行動","3"));
+    cardArray.push(new Card("ニンフ","行動・攻撃","4"));
+    cardArray.push(new Card("辻占い","行動","4"));
+    cardArray.push(new Card("御料地","領地","4"));
+    cardArray.push(new Card("大農園","領地","4"));
+
+    //71~80
+    cardArray.push(new Card("氷雪の精霊","行動・攻撃","4"));
+    cardArray.push(new Card("石弓隊","行動・攻撃","4"));
+    cardArray.push(new Card("商船団","行動","5"));
+    cardArray.push(new Card("行商人","行動","4"));
+    cardArray.push(new Card("ブラウニー","行動","4"));
+    cardArray.push(new Card("検地役人","行動・攻撃","4"));
+    cardArray.push(new Card("聖堂騎士","行動・攻撃","5"));
+    cardArray.push(new Card("交易都市","領地","5"));
+    cardArray.push(new Card("鬼族の戦士","行動・攻撃","5"));
+    cardArray.push(new Card("メイド長","継承権","5"));
+
+    //81~90
+    cardArray.push(new Card("執事","行動","5"));
+    cardArray.push(new Card("徴税人","行動・攻撃","5"));
+    cardArray.push(new Card("収穫祭","行動","5"));
+    cardArray.push(new Card("合併","行動","5"));
+    cardArray.push(new Card("裁判官","継承権","6"));
+    cardArray.push(new Card("漁村","領地","2"));
+    cardArray.push(new Card("へそくり","行動","3"));
+    cardArray.push(new Card("女学院","行動","3"));
+    cardArray.push(new Card("いたずら妖精","行動・攻撃","3"));
+    cardArray.push(new Card("魔法のランプ","行動","4"));
+
+    //91~100
+    cardArray.push(new Card("開発命令","行動・攻撃","4"));
+    cardArray.push(new Card("まじない師","行動・攻撃","4"));
+    cardArray.push(new Card("学術都市","領地","5"));
+    cardArray.push(new Card("十字軍","行動","5"));
+    cardArray.push(new Card("転売屋","行動","5"));
+    cardArray.push(new Card("免罪符","行動","5"));
+    cardArray.push(new Card("ニンジャマスター","行動","5"));
+    cardArray.push(new Card("傭兵団","行動・攻撃","5"));
+    cardArray.push(new Card("砲術部隊","行動・攻撃","5"));
+    cardArray.push(new Card("独立都市","領地","5"));
+
+    //101
+    cardArray.push(new Card("大公爵","継承権","12"));
+    
+}
+
+
 
 function random() {
     var numArray = [] ;
@@ -27,20 +164,17 @@ function random() {
             let k = 0 ;
             for(var j = 0 ; j < numArray.length; j++){
                 if(numArray[j] == num){
-                    
                     k = 1;
                 }
             }
             if(k == 0){
-                document.getElementById("ransuu").innerHTML += "<br>" + num + "</br>"; //乱数の出力
+                document.getElementById("ransuu").innerHTML += "<br>" + num + " " + cardArray[num-1].name+ "</br>"; //乱数の出力
                 numArray.push(num);
                 break;
             }
         }
         i++ ;
     }
-    
-    
 }
 
 </script>
