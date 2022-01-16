@@ -156,21 +156,23 @@ var cardArray = [] ;
     cardArray.push(new Card("大公爵","継承権","12"));
     
 }
-{
-var cardNumber = {};
-cardNumber["行動"] = 0;
-cardNumber["行動・防衛"] = 0;
-cardNumber["行動・攻撃"] = 0;
-cardNumber["行動・防衛・災い"] = 0;
-cardNumber["行動+追加"] = 0;
-cardNumber["継承権・領地"] = 0;
-cardNumber["継承権"] = 0;
-cardNumber["行動・防衛+追加"] = 0;
-cardNumber["領地"] = 0;
-cardNumber["災い"] = 0;
-}
 
-{
+function random() {
+    {
+    var cardNumber = {};
+    cardNumber["行動"] = 0;
+    cardNumber["行動・防衛"] = 0;
+    cardNumber["行動・攻撃"] = 0;
+    cardNumber["行動・防衛・災い"] = 0;
+    cardNumber["行動+追加"] = 0;
+    cardNumber["継承権・領地"] = 0;
+    cardNumber["継承権"] = 0;
+    cardNumber["行動・防衛+追加"] = 0;
+    cardNumber["領地"] = 0;
+    cardNumber["災い"] = 0;
+    }
+
+    {
 var cardCost = {};
 cardCost['2'] = 0;
 cardCost['3'] = 0;
@@ -180,7 +182,6 @@ cardCost['6'] = 0;
 cardCost['12'] = 0;
 }
 
-function random() {
     var numArray = [] ;
     var i = 0 ;
     document.getElementById("ransuu").innerHTML = "";
