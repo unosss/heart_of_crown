@@ -2,9 +2,11 @@
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
-<title>サンプル</title>
+<title>Heart_of_Crown</title>
+
 </head>
 <body>
+
 <form>
 <p>
 <label>デッキ枚数:<input type="number" id="number" placeholder="入力してください" value="10"></label>
@@ -13,6 +15,13 @@
 <input type="button" value="デッキ生成" onClick="random()">
 <span id="ransuu"></span>
 </form>
+
+<p>カードタイプ割合</p>
+<div style="width: 300px;">
+    <canvas id="chart" width="150" height="150"></canvas>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js" integrity="sha256-R4pqcOYV8lt7snxMQO/HSbVCFRPMdrhAFMH+vr9giYI=" crossorigin="anonymous"></script>
 
 <script>
 function Card(name, type, cost) {
@@ -150,7 +159,19 @@ var cardArray = [] ;
     cardArray.push(new Card("大公爵","継承権","12"));
     
 }
-
+{
+var cardNumber = {};
+cardNumber["行動"] = 0;
+cardNumber["行動・防衛"] = 0;
+cardNumber["行動・攻撃"] = 0;
+cardNumber["行動・防衛・災い"] = 0;
+cardNumber["行動+追加"] = 0;
+cardNumber["継承権・領地"] = 0;
+cardNumber["継承権"] = 0;
+cardNumber["行動・防衛+追加"] = 0;
+cardNumber["領地"] = 0;
+cardNumber["災い"] = 0;
+}
 
 
 function random() {
@@ -168,14 +189,84 @@ function random() {
                 }
             }
             if(k == 0){
-                document.getElementById("ransuu").innerHTML += "<br>" + num + " " + cardArray[num-1].name+ "</br>"; //乱数の出力
                 numArray.push(num);
                 break;
             }
         }
         i++ ;
     }
+    var f = function(a, b){
+        return a - b
+    }
+    numArray.sort(f);
+    for(var j = 0;j < numArray.length;j++){
+        document.getElementById("ransuu").innerHTML += "<br>" + numArray[j] + " " + cardArray[numArray[j]-1].name+ " " + cardArray[numArray[j]-1].type+ " " + cardArray[numArray[j]-1].cost + "</br>"; //乱数の出力
+        cardNumber[cardArray[numArray[j]-1].name] += 1;
+    }
 }
+
+
+var ctx = $('#chart');
+var mychart = new Chart(ctx, {
+    type: 'pie',
+    data: {
+        labels: [
+            '行動',
+            '行動・防衛',
+            '行動・攻撃',
+            '行動・防衛・災い',
+            '行動+追加',
+            '継承権・領地',
+            '継承権',
+            '行動・防衛+追加',
+            '領地',
+            '災い'
+        ],
+        datasets: [{
+            label: 'サンプルグラフ',
+            data: [
+                cardNumber["行動"],
+                cardNumber["行動・防衛"],
+                cardNumber["行動・攻撃"],
+                cardNumber["行動・防衛・災い"],
+                cardNumber["行動+追加"],
+                cardNumber["継承権・領地"],
+                cardNumber["継承権"],
+                cardNumber["行動・防衛+追加"],
+                cardNumber["領地"],
+                cardNumber["災い"],
+            ],
+            backgroundColor: [
+                'rgb(  0,   0, 255)',
+                'rgb(  0,   0, 128)',
+                'rgb(  0, 128, 128)',
+                'rgb(  0, 128,   0)',
+                'rgb(  0, 255,   0)',
+                'rgb(  0, 255, 255)',
+                'rgb(255, 255,   0)',
+                'rgb(255,   0, 255)',
+                'rgb(128, 128,   0)',
+                'rgb(128,   0, 128)'
+            ]
+        }]
+    },
+    options: {
+        legend: {
+            position: 'bottom',
+        },
+        scales: {
+            yAxes: [{
+                ticks: {
+                    display: false,
+                    beginAtZero: true,
+                },
+                gridLines: {
+                    display: false
+                }
+            }]
+        }
+    }
+});
 
 </script>
 </body>
