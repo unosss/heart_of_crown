@@ -200,8 +200,8 @@ function random() {
     }
     numArray.sort(f);
     for(var j = 0;j < numArray.length;j++){
-        document.getElementById("ransuu").innerHTML += "<br>" + numArray[j] + " " + cardArray[numArray[j]-1].name+ " " + cardArray[numArray[j]-1].type+ " " + cardArray[numArray[j]-1].cost + "</br>"; //乱数の出力
-        cardNumber[cardArray[numArray[j]-1].name] += 1;
+        document.getElementById("ransuu").innerHTML += "<br>" + numArray[j] + " " + cardArray[numArray[j]-1].name+ " " + cardArray[numArray[j]-1].type+ " " + cardArray[numArray[j]-1].cost+ " " + cardNumber[cardArray[numArray[j]-1].type] + "</br>"; //乱数の出力
+        cardNumber[cardArray[numArray[j]-1].type] += 1;
     }
 }
 
