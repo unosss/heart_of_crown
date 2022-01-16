@@ -16,7 +16,7 @@
 <span id="ransuu"></span>
 </form>
 
-<p>カードタイプ割合</p>
+
 <canvas id="myChart"></canvas>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
 
@@ -170,7 +170,7 @@ cardNumber["領地"] = 0;
 cardNumber["災い"] = 0;
 }
 
-for(var k = 0;k < 10;k++)cnt.push(k);
+
 function random() {
     var numArray = [] ;
     var i = 0 ;
@@ -197,7 +197,7 @@ function random() {
     }
     numArray.sort(f);
     for(var j = 0;j < numArray.length;j++){
-        document.getElementById("ransuu").innerHTML += "<br>" + numArray[j] + " " + cardArray[numArray[j]-1].name+ " " + cardArray[numArray[j]-1].type+ " " + cardArray[numArray[j]-1].cost+" "  +  "</br>"; //乱数の出力
+        document.getElementById("ransuu").innerHTML += "<br>" + "No." + numArray[j] + " " + cardArray[numArray[j]-1].name+ "   (" + "タイプ:"+cardArray[numArray[j]-1].type+ " " + "コスト:"+cardArray[numArray[j]-1].cost+")"  +  "</br>"; //乱数の出力
         cardNumber[cardArray[numArray[j]-1].type] += 1;
     }
     var ctx = document.getElementById("myChart").getContext('2d');
@@ -219,16 +219,16 @@ function random() {
             ],
             datasets: [{
                 data: [
-                cardNumber["行動"],
-                cardNumber["行動・防衛"],
-                cardNumber["行動・攻撃"],
-                cardNumber["行動・防衛・災い"],
-                cardNumber["行動+追加"],
-                cardNumber["継承権・領地"],
-                cardNumber["継承権"],
-                cardNumber["行動・防衛+追加"],
-                cardNumber["領地"],
-                cardNumber["災い"]
+                    cardNumber["行動"],
+                    cardNumber["行動・防衛"],
+                    cardNumber["行動・攻撃"],
+                    cardNumber["行動・防衛・災い"],
+                    cardNumber["行動+追加"],
+                    cardNumber["継承権・領地"],
+                    cardNumber["継承権"],
+                    cardNumber["行動・防衛+追加"],
+                    cardNumber["領地"],
+                    cardNumber["災い"]
                 ],
                 backgroundColor: [
                     'rgb(  0,   0, 255)',
@@ -245,6 +245,14 @@ function random() {
             }]
         },
         options: {
+            title: {
+                fontSize: 20,              // フォントサイズ 省略時は 12
+                fontColor: "black",        // 文字の色 省略時は "#666"
+                fontStyle: "bold",         // フォントタイプ 省略時は "bold"
+                fontFamily: "sans-serif",  // フォントファミリ 省略時は "'Helvetica Neue', 'Helvetica', 'Arial', sans-serif"
+                display: true,
+                text: 'カードタイプ割合'
+            },
             legend: {
                 position: 'bottom',
             },
