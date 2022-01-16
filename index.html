@@ -17,11 +17,8 @@
 </form>
 
 <p>カードタイプ割合</p>
-<div style="width: 300px;">
-    <canvas id="chart" width="150" height="150"></canvas>
-</div>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js" integrity="sha256-R4pqcOYV8lt7snxMQO/HSbVCFRPMdrhAFMH+vr9giYI=" crossorigin="anonymous"></script>
+<canvas id="myChart"></canvas>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
 
 <script>
 function Card(name, type, cost) {
@@ -173,7 +170,7 @@ cardNumber["領地"] = 0;
 cardNumber["災い"] = 0;
 }
 
-
+for(var k = 0;k < 10;k++)cnt.push(k);
 function random() {
     var numArray = [] ;
     var i = 0 ;
@@ -200,31 +197,28 @@ function random() {
     }
     numArray.sort(f);
     for(var j = 0;j < numArray.length;j++){
-        document.getElementById("ransuu").innerHTML += "<br>" + numArray[j] + " " + cardArray[numArray[j]-1].name+ " " + cardArray[numArray[j]-1].type+ " " + cardArray[numArray[j]-1].cost+ " " + cardNumber[cardArray[numArray[j]-1].type] + "</br>"; //乱数の出力
+        document.getElementById("ransuu").innerHTML += "<br>" + numArray[j] + " " + cardArray[numArray[j]-1].name+ " " + cardArray[numArray[j]-1].type+ " " + cardArray[numArray[j]-1].cost+" "  +  "</br>"; //乱数の出力
         cardNumber[cardArray[numArray[j]-1].type] += 1;
     }
-}
+    var ctx = document.getElementById("myChart").getContext('2d');
 
-
-var ctx = $('#chart');
-var mychart = new Chart(ctx, {
-    type: 'pie',
-    data: {
-        labels: [
-            '行動',
-            '行動・防衛',
-            '行動・攻撃',
-            '行動・防衛・災い',
-            '行動+追加',
-            '継承権・領地',
-            '継承権',
-            '行動・防衛+追加',
-            '領地',
-            '災い'
-        ],
-        datasets: [{
-            label: 'サンプルグラフ',
-            data: [
+    var myChart = new Chart(ctx, {
+        type: 'pie',
+        data: {
+            labels: [
+                '行動',
+                '行動・防衛',
+                '行動・攻撃',
+                '行動・防衛・災い',
+                '行動+追加',
+                '継承権・領地',
+                '継承権',
+                '行動・防衛+追加',
+                '領地',
+                '災い'
+            ],
+            datasets: [{
+                data: [
                 cardNumber["行動"],
                 cardNumber["行動・防衛"],
                 cardNumber["行動・攻撃"],
@@ -234,39 +228,40 @@ var mychart = new Chart(ctx, {
                 cardNumber["継承権"],
                 cardNumber["行動・防衛+追加"],
                 cardNumber["領地"],
-                cardNumber["災い"],
-            ],
-            backgroundColor: [
-                'rgb(  0,   0, 255)',
-                'rgb(  0,   0, 128)',
-                'rgb(  0, 128, 128)',
-                'rgb(  0, 128,   0)',
-                'rgb(  0, 255,   0)',
-                'rgb(  0, 255, 255)',
-                'rgb(255, 255,   0)',
-                'rgb(255,   0, 255)',
-                'rgb(128, 128,   0)',
-                'rgb(128,   0, 128)'
-            ]
-        }]
-    },
-    options: {
-        legend: {
-            position: 'bottom',
-        },
-        scales: {
-            yAxes: [{
-                ticks: {
-                    display: false,
-                    beginAtZero: true,
-                },
-                gridLines: {
-                    display: false
-                }
+                cardNumber["災い"]
+                ],
+                backgroundColor: [
+                    'rgb(  0,   0, 255)',
+                    'rgb(  0,   0, 128)',
+                    'rgb(  0, 128, 128)',
+                    'rgb(  0, 128,   0)',
+                    'rgb(  0, 255,   0)',
+                    'rgb(  0, 255, 255)',
+                    'rgb(255, 255,   0)',
+                    'rgb(255,   0, 255)',
+                    'rgb(128, 128,   0)',
+                    'rgb(128,   0, 128)'
+                ]
             }]
+        },
+        options: {
+            legend: {
+                position: 'bottom',
+            },
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        display: false,
+                        beginAtZero: true,
+                    },
+                    gridLines: {
+                        display: false
+                    }
+                }]
+            }
         }
-    }
-});
+    });
+}
 
 </script>
 </body>
